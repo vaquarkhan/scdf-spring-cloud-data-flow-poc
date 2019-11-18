@@ -3,14 +3,27 @@ POC for Spring Cloud Data Flow
 
 See this architecture diagram ![Architecture diagram](architecture.png?raw=true "Title")
 
-For local instalation with Docker follow the guide https://dataflow.spring.io/docs/installation/local/
 
+#For local instalation with Docker follow the guide https://dataflow.spring.io/docs/installation/local/
 To start it:
 - `cd docker`
 - `start.bat`
 
 To start Shell run:
 `docker exec -it dataflow-server java -jar shell.jar`
+
+#For local Openshift instalation (with admin):
+1.Enable Hyper-V https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
+2.Add Switch "External VM Switch" https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/connect-to-network
+3.Download release https://github.com/minishift/minishift/releases/download/v1.34.1/minishift-1.34.1-windows-amd64.zip
+4.`cd minishift`
+5.start it `minishift start`  (this downloads the oc binary, image ...)
+When OpenShift server started.The server is accessible via web console at: https://192.168.99.128:8443
+You are logged in as:
+User:     developer
+Password: developer
+
+To login as administrator: `oc login -u system:admin`
 
 
 To open the Spring Cloud Data Flow Dashboard go to http://localhost:9393/dashboard
@@ -21,12 +34,8 @@ You can reach the Grafana dashboard at http://localhost:3000 with the following 
 User: admin
 Password: admin
 
-
-TODO 
+##TODO 
 integration test to insert generated csv file with milion rows into sftp folder, 50 000 jms xml messages into Kafka 
 gui security
 openshift example
 email notification - alert manager
-=======
-To run local openshift v3. try 
-`docker pull openshift/origin`
