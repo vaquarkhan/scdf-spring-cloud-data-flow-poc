@@ -20,3 +20,6 @@ You can reach the Prometheus UI at http://localhost:9090/graph and http://localh
 You can reach the Grafana dashboard at http://localhost:3000 with the following credentials:
 User: admin
 Password: admin
+
+To run local openshift v3. try 
+`docker pull openshift/origin`
