@@ -20,3 +20,9 @@ You can reach the Prometheus UI at http://localhost:9090/graph and http://localh
 You can reach the Grafana dashboard at http://localhost:3000 with the following credentials:
 User: admin
 Password: admin
+
+TODO 
+integration test to insert generated csv file with milion rows into sftp folder, 50 000 jms xml messages into Kafka 
+gui security
+openshift example
+email notification - alert manager
