@@ -17,6 +17,7 @@ To start Shell run:
 -Add Switch "External VM Switch" https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/connect-to-network
 -Download release https://github.com/minishift/minishift/releases/download/v1.34.1/minishift-1.34.1-windows-amd64.zip
 -`cd minishift`
+-change default memory: `minishift config set --global memory 8192`
 -start it `minishift start`  (this downloads the oc binary, image ...)
 When OpenShift server started.The server is accessible via web console at: https://192.168.99.128:8443
 You are logged in as:
