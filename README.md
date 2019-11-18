@@ -48,3 +48,5 @@ integration test to insert generated csv file with milion rows into sftp folder,
 gui security
 openshift example
 email notification - alert manager
+
+https://github.com/spring-cloud/spring-cloud-dataflow
