@@ -19,13 +19,21 @@ To start Shell run:
 -`cd minishift`
 -change default memory: `minishift config set --global memory 8192`
 -start it `minishift start`  (this downloads the oc binary, image ...)
-When OpenShift server started.The server is accessible via web console at: https://192.168.99.128:8443
+When OpenShift server started.The server is accessible via web console at: https://192.168.156.250:8443/console
 You are logged in as:
 User:     developer
 Password: developer
 
 To login as administrator: `oc login -u system:admin`
 
+##Install Helm
+- download binary from https://get.helm.sh/helm-v2.16.1-windows-amd64.zip
+- unzip into helm directory
+- helm init
+- helm repo update
+- helm install --name my-release stable/spring-cloud-data-flow --set kafka.enabled=true,rabbitmq.enabled=false  --set features.streaming.enabled=true --set features.batch.enabled=true
+
+as Helm didnt work https://dataflow.spring.io/docs/installation/kubernetes/kubectl/
 
 To open the Spring Cloud Data Flow Dashboard go to http://localhost:9393/dashboard
 
