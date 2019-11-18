@@ -1,0 +1,3800 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2019-11-18T19:03:40Z",
+                "generateName": "grafana-688cd668c9-",
+                "labels": {
+                    "app": "grafana",
+                    "pod-template-hash": "2447822475"
+                },
+                "name": "grafana-688cd668c9-plvpf",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "grafana-688cd668c9",
+                        "uid": "2219eab8-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "7625",
+                "selfLink": "/api/v1/namespaces/myproject/pods/grafana-688cd668c9-plvpf",
+                "uid": "221f5b67-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "GF_SECURITY_ADMIN_USER",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "admin-username",
+                                        "name": "grafana"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "GF_SECURITY_ADMIN_PASSWORD",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "admin-password",
+                                        "name": "grafana"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "springcloud/spring-cloud-dataflow-grafana-prometheus:2.2.1.RELEASE",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "grafana",
+                        "ports": [
+                            {
+                                "containerPort": 3000,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "2500Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "100Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/grafana/provisioning/datasources/datasources.yaml",
+                                "name": "config",
+                                "subPath": "datasources.yaml"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-9fchg",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-p6668"
+                    }
+                ],
+                "nodeName": "localhost",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000140000,
+                    "seLinuxOptions": {
+                        "level": "s0:c12,c4"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    }
+                ],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "grafana"
+                        },
+                        "name": "config"
+                    },
+                    {
+                        "name": "default-token-9fchg",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-9fchg"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:03:40Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:04:40Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:03:40Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://3e2a160d69fa7817b37c41269927a1624d32a9a1f6d9ec1ec3f7478d207a3561",
+                        "image": "docker.io/springcloud/spring-cloud-dataflow-grafana-prometheus:2.2.1.RELEASE",
+                        "imageID": "docker-pullable://docker.io/springcloud/spring-cloud-dataflow-grafana-prometheus@sha256:8c8e7ccfe52a99fb46793c7f8bbb6244b55037e3548329e134fcb52525163358",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "docker://3826128f9b304d458c92d272494fba2e048edc81b69f9723c5ef610211e31641",
+                                "exitCode": 1,
+                                "finishedAt": "2019-11-18T19:04:39Z",
+                                "reason": "Error",
+                                "startedAt": "2019-11-18T19:04:29Z"
+                            }
+                        },
+                        "name": "grafana",
+                        "ready": true,
+                        "restartCount": 1,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-11-18T19:04:40Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.156.250",
+                "phase": "Running",
+                "podIP": "172.17.0.14",
+                "qosClass": "Burstable",
+                "startTime": "2019-11-18T19:03:40Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "generateName": "kafka-broker-7bbf579457-",
+                "labels": {
+                    "app": "kafka",
+                    "component": "kafka-broker",
+                    "pod-template-hash": "3669135013"
+                },
+                "name": "kafka-broker-7bbf579457-vvcjt",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "kafka-broker-7bbf579457",
+                        "uid": "ebd5ca62-0a35-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "15232",
+                "selfLink": "/api/v1/namespaces/myproject/pods/kafka-broker-7bbf579457-vvcjt",
+                "uid": "ebe1c608-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ENABLE_AUTO_EXTEND",
+                                "value": "true"
+                            },
+                            {
+                                "name": "KAFKA_RESERVED_BROKER_MAX_ID",
+                                "value": "999999999"
+                            },
+                            {
+                                "name": "KAFKA_AUTO_CREATE_TOPICS_ENABLE",
+                                "value": "false"
+                            },
+                            {
+                                "name": "KAFKA_PORT",
+                                "value": "9092"
+                            },
+                            {
+                                "name": "KAFKA_ADVERTISED_PORT",
+                                "value": "9092"
+                            },
+                            {
+                                "name": "KAFKA_ADVERTISED_HOST_NAME",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "status.podIP"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "KAFKA_ZOOKEEPER_CONNECT",
+                                "value": "kafka-zk:2181"
+                            }
+                        ],
+                        "image": "wurstmeister/kafka:2.11-0.11.0.3",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "kafka",
+                        "ports": [
+                            {
+                                "containerPort": 9092,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-9fchg",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-p6668"
+                    }
+                ],
+                "nodeName": "localhost",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000140000,
+                    "seLinuxOptions": {
+                        "level": "s0:c12,c4"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                    {
+                        "name": "default-token-9fchg",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-9fchg"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:04:09Z",
+                        "message": "containers with unready status: [kafka]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "message": "containers with unready status: [kafka]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://0903f35792d9684712008a90da8bc245f962e57d551630232acea9fd332ffa7b",
+                        "image": "docker.io/wurstmeister/kafka:2.11-0.11.0.3",
+                        "imageID": "docker-pullable://docker.io/wurstmeister/kafka@sha256:04df57268bb64654df6487b3f345748fd8412a9c01953a4c1d15c2e41d413113",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "docker://0903f35792d9684712008a90da8bc245f962e57d551630232acea9fd332ffa7b",
+                                "exitCode": 1,
+                                "finishedAt": "2019-11-18T19:34:51Z",
+                                "reason": "Error",
+                                "startedAt": "2019-11-18T19:34:50Z"
+                            }
+                        },
+                        "name": "kafka",
+                        "ready": false,
+                        "restartCount": 11,
+                        "state": {
+                            "waiting": {
+                                "message": "Back-off 5m0s restarting failed container=kafka pod=kafka-broker-7bbf579457-vvcjt_myproject(ebe1c608-0a35-11ea-a312-00155d380160)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.156.250",
+                "phase": "Running",
+                "podIP": "172.17.0.8",
+                "qosClass": "BestEffort",
+                "startTime": "2019-11-18T19:02:09Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "generateName": "kafka-zk-5f9bff7d5-",
+                "labels": {
+                    "app": "kafka-zk",
+                    "component": "kafka-zk",
+                    "pod-template-hash": "195699381"
+                },
+                "name": "kafka-zk-5f9bff7d5-jzssw",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "kafka-zk-5f9bff7d5",
+                        "uid": "ebdb0a00-0a35-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "15625",
+                "selfLink": "/api/v1/namespaces/myproject/pods/kafka-zk-5f9bff7d5-jzssw",
+                "uid": "ebe5e79b-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ZOOKEEPER_ID",
+                                "value": "1"
+                            },
+                            {
+                                "name": "ZOOKEEPER_SERVER_1",
+                                "value": "kafka-zk"
+                            }
+                        ],
+                        "image": "digitalwonderland/zookeeper",
+                        "imagePullPolicy": "Always",
+                        "name": "kafka-zk",
+                        "ports": [
+                            {
+                                "containerPort": 2181,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-9fchg",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-p6668"
+                    }
+                ],
+                "nodeName": "localhost",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000140000,
+                    "seLinuxOptions": {
+                        "level": "s0:c12,c4"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                    {
+                        "name": "default-token-9fchg",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-9fchg"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "message": "containers with unready status: [kafka-zk]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "message": "containers with unready status: [kafka-zk]",
+                        "reason": "ContainersNotReady",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://2c5d9dffd75f2b5da1c870826a5399525d1ac4d9260da13a8a87b8279fbb4a1f",
+                        "image": "docker.io/digitalwonderland/zookeeper:latest",
+                        "imageID": "docker-pullable://docker.io/digitalwonderland/zookeeper@sha256:3942ff1981d0ff57e8faf48b45814c3f0d604a5c4dcd75ecbe114c7279dbf4ce",
+                        "lastState": {
+                            "terminated": {
+                                "containerID": "docker://2c5d9dffd75f2b5da1c870826a5399525d1ac4d9260da13a8a87b8279fbb4a1f",
+                                "exitCode": 1,
+                                "finishedAt": "2019-11-18T19:36:26Z",
+                                "reason": "Error",
+                                "startedAt": "2019-11-18T19:36:26Z"
+                            }
+                        },
+                        "name": "kafka-zk",
+                        "ready": false,
+                        "restartCount": 11,
+                        "state": {
+                            "waiting": {
+                                "message": "Back-off 5m0s restarting failed container=kafka-zk pod=kafka-zk-5f9bff7d5-jzssw_myproject(ebe5e79b-0a35-11ea-a312-00155d380160)",
+                                "reason": "CrashLoopBackOff"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.156.250",
+                "phase": "Running",
+                "podIP": "172.17.0.9",
+                "qosClass": "BestEffort",
+                "startTime": "2019-11-18T19:02:09Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2019-11-18T19:02:39Z",
+                "generateName": "mysql-7fc8c7c5c9-",
+                "labels": {
+                    "app": "mysql",
+                    "pod-template-hash": "3974737175"
+                },
+                "name": "mysql-7fc8c7c5c9-xjmws",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "mysql-7fc8c7c5c9",
+                        "uid": "fdfb0849-0a35-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "7364",
+                "selfLink": "/api/v1/namespaces/myproject/pods/mysql-7fc8c7c5c9-xjmws",
+                "uid": "fe02fd05-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "MYSQL_ROOT_PASSWORD",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "mysql-root-password",
+                                        "name": "mysql"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "mysql:5.6",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "mysql",
+                        "ports": [
+                            {
+                                "containerPort": 3306,
+                                "name": "mysql",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/lib/mysql",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-9fchg",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-p6668"
+                    }
+                ],
+                "nodeName": "localhost",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000140000,
+                    "seLinuxOptions": {
+                        "level": "s0:c12,c4"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                    {
+                        "name": "data",
+                        "persistentVolumeClaim": {
+                            "claimName": "mysql"
+                        }
+                    },
+                    {
+                        "name": "default-token-9fchg",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-9fchg"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:02:39Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:03:52Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:02:39Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://017fffb4a0ad5d77963aa38799a742380172674d2c26255eca2b87b83ba3f81e",
+                        "image": "docker.io/mysql:5.6",
+                        "imageID": "docker-pullable://docker.io/mysql@sha256:411cb46904b646d1260e075505ee75d7457511412011eb03928e956eac1c0bf9",
+                        "lastState": {},
+                        "name": "mysql",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-11-18T19:03:52Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.156.250",
+                "phase": "Running",
+                "podIP": "172.17.0.12",
+                "qosClass": "BestEffort",
+                "startTime": "2019-11-18T19:02:39Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2019-11-18T19:03:18Z",
+                "generateName": "prometheus-74c9c8b9d8-",
+                "labels": {
+                    "app": "prometheus",
+                    "pod-template-hash": "3075746584"
+                },
+                "name": "prometheus-74c9c8b9d8-59wcj",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "prometheus-74c9c8b9d8",
+                        "uid": "1500d2b8-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "7441",
+                "selfLink": "/api/v1/namespaces/myproject/pods/prometheus-74c9c8b9d8-59wcj",
+                "uid": "150564f1-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "args": [
+                            "--config.file=/etc/prometheus/prometheus.yml",
+                            "--storage.tsdb.path=/prometheus/"
+                        ],
+                        "image": "prom/prometheus:v2.6.0",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "prometheus",
+                        "ports": [
+                            {
+                                "containerPort": 9090,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/prometheus/",
+                                "name": "prometheus-config-volume"
+                            },
+                            {
+                                "mountPath": "/prometheus/",
+                                "name": "prometheus-storage-volume"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-9fchg",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-p6668"
+                    }
+                ],
+                "nodeName": "localhost",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000140000,
+                    "seLinuxOptions": {
+                        "level": "s0:c12,c4"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "prometheus"
+                        },
+                        "name": "prometheus-config-volume"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "prometheus-storage-volume"
+                    },
+                    {
+                        "name": "default-token-9fchg",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-9fchg"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:03:18Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:04:07Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:03:18Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://f42ff54cdeaffe4f6b954da9ca4b876e818ad86068747822e67dd46f16d5020f",
+                        "image": "docker.io/prom/prometheus:v2.6.0",
+                        "imageID": "docker-pullable://docker.io/prom/prometheus@sha256:1ffbf5d3c6476384905e8f57c98ac0611f328af68bedb909ec3f350d7e18b134",
+                        "lastState": {},
+                        "name": "prometheus",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-11-18T19:04:06Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.156.250",
+                "phase": "Running",
+                "podIP": "172.17.0.13",
+                "qosClass": "BestEffort",
+                "startTime": "2019-11-18T19:03:18Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2019-11-18T19:17:41Z",
+                "generateName": "scdf-server-7c7d6644c5-",
+                "labels": {
+                    "app": "scdf-server",
+                    "pod-template-hash": "3738220071"
+                },
+                "name": "scdf-server-7c7d6644c5-qrr62",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "scdf-server-7c7d6644c5",
+                        "uid": "10528e00-0a38-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "11032",
+                "selfLink": "/api/v1/namespaces/myproject/pods/scdf-server-7c7d6644c5-qrr62",
+                "uid": "17628b15-0a38-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "KUBERNETES_NAMESPACE",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.namespace"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "SERVER_PORT",
+                                "value": "9080"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_CONFIG_ENABLED",
+                                "value": "false"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_DATAFLOW_FEATURES_ANALYTICS_ENABLED",
+                                "value": "true"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_DATAFLOW_FEATURES_SCHEDULES_ENABLED",
+                                "value": "true"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API",
+                                "value": "true"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_KUBERNETES_SECRETS_NAME",
+                                "value": "mysql"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_KUBERNETES_CONFIG_NAME",
+                                "value": "scdf-server"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_DATAFLOW_SERVER_URI",
+                                "value": "http://${SCDF_SERVER_SERVICE_HOST}:${SCDF_SERVER_SERVICE_PORT}"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_SKIPPER_CLIENT_SERVER_URI",
+                                "value": "http://${SKIPPER_SERVICE_HOST}:${SKIPPER_SERVICE_PORT}/api"
+                            },
+                            {
+                                "name": "SPRING_APPLICATION_JSON",
+                                "value": "{ \"maven\": { \"local-repository\": null, \"remote-repositories\": { \"repo1\": { \"url\": \"https://repo.spring.io/libs-snapshot\"} } } }"
+                            }
+                        ],
+                        "image": "springcloud/spring-cloud-dataflow-server:2.2.1.RELEASE",
+                        "imagePullPolicy": "Always",
+                        "name": "scdf-server",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "2Gi"
+                            },
+                            "requests": {
+                                "cpu": "500m",
+                                "memory": "1Gi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "scdf-sa-token-clbcx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "imagePullSecrets": [
+                    {
+                        "name": "scdf-sa-dockercfg-t6cmc"
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;"
+                        ],
+                        "image": "busybox",
+                        "imagePullPolicy": "Always",
+                        "name": "init-mysql-wait",
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "scdf-sa-token-clbcx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "localhost",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000140000,
+                    "seLinuxOptions": {
+                        "level": "s0:c12,c4"
+                    }
+                },
+                "serviceAccount": "scdf-sa",
+                "serviceAccountName": "scdf-sa",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "scdf-sa-token-clbcx",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "scdf-sa-token-clbcx"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:17:46Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:17:49Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:17:41Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://4430b27684cb5b2620ef4aa3c7acb475f29ed90f0d482174424409b9bf56a144",
+                        "image": "docker.io/springcloud/spring-cloud-dataflow-server:2.2.1.RELEASE",
+                        "imageID": "docker-pullable://docker.io/springcloud/spring-cloud-dataflow-server@sha256:dd8af6eac46118326172907c08ebd24c8da0f861eb67d333e88001fffb175d62",
+                        "lastState": {},
+                        "name": "scdf-server",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-11-18T19:17:49Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.156.250",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "docker://a9facc3f042888747172425837e34a29ad55e5349758d93dc16c4ab361c25b02",
+                        "image": "docker.io/busybox:latest",
+                        "imageID": "docker-pullable://docker.io/busybox@sha256:1303dbf110c57f3edf68d9f5a16c082ec06c4cf7604831669faf2c712260b5a0",
+                        "lastState": {},
+                        "name": "init-mysql-wait",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://a9facc3f042888747172425837e34a29ad55e5349758d93dc16c4ab361c25b02",
+                                "exitCode": 0,
+                                "finishedAt": "2019-11-18T19:17:45Z",
+                                "reason": "Completed",
+                                "startedAt": "2019-11-18T19:17:45Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "172.17.0.16",
+                "qosClass": "Burstable",
+                "startTime": "2019-11-18T19:17:41Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2019-11-18T19:05:39Z",
+                "generateName": "skipper-65b6989dd7-",
+                "labels": {
+                    "app": "skipper",
+                    "pod-template-hash": "2162545883"
+                },
+                "name": "skipper-65b6989dd7-9fc4n",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "skipper-65b6989dd7",
+                        "uid": "69040a1d-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "8113",
+                "selfLink": "/api/v1/namespaces/myproject/pods/skipper-65b6989dd7-9fc4n",
+                "uid": "690ecf22-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "SPRING_CLOUD_KUBERNETES_CONFIG_NAME",
+                                "value": "skipper"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API",
+                                "value": "true"
+                            },
+                            {
+                                "name": "SPRING_CLOUD_KUBERNETES_SECRETS_NAME",
+                                "value": "mysql"
+                            }
+                        ],
+                        "image": "springcloud/spring-cloud-skipper-server:2.1.2.RELEASE",
+                        "imagePullPolicy": "Always",
+                        "name": "skipper",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "1",
+                                "memory": "1Gi"
+                            },
+                            "requests": {
+                                "cpu": "500m",
+                                "memory": "640Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "scdf-sa-token-clbcx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "imagePullSecrets": [
+                    {
+                        "name": "scdf-sa-dockercfg-t6cmc"
+                    }
+                ],
+                "initContainers": [
+                    {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;"
+                        ],
+                        "image": "busybox",
+                        "imagePullPolicy": "Always",
+                        "name": "init-mysql-wait",
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "scdf-sa-token-clbcx",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "mysql -h mysql -u root -e \"CREATE DATABASE IF NOT EXISTS skipper;\""
+                        ],
+                        "env": [
+                            {
+                                "name": "MYSQL_PWD",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "mysql-root-password",
+                                        "name": "mysql"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "mysql:5.6",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "init-mysql-database",
+                        "resources": {},
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1000140000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "scdf-sa-token-clbcx",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "localhost",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1000140000,
+                    "seLinuxOptions": {
+                        "level": "s0:c12,c4"
+                    }
+                },
+                "serviceAccount": "scdf-sa",
+                "serviceAccountName": "scdf-sa",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "scdf-sa-token-clbcx",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "scdf-sa-token-clbcx"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:05:46Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:06:25Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": null,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2019-11-18T19:05:39Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://48c8bac2eb559a50224aa8cad1a758565dd0f02e20ee410f50ceaef3e56a8529",
+                        "image": "docker.io/springcloud/spring-cloud-skipper-server:2.1.2.RELEASE",
+                        "imageID": "docker-pullable://docker.io/springcloud/spring-cloud-skipper-server@sha256:b6ea6f8f38ec0afa03c12313303380aec9ec9a0011e92b162faa7c0a854fcc58",
+                        "lastState": {},
+                        "name": "skipper",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2019-11-18T19:06:24Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.156.250",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "docker://d33fd69bf5482f22aa2cf05d85f7f90da00f2669d04d9606980e4615da79791e",
+                        "image": "docker.io/busybox:latest",
+                        "imageID": "docker-pullable://docker.io/busybox@sha256:1303dbf110c57f3edf68d9f5a16c082ec06c4cf7604831669faf2c712260b5a0",
+                        "lastState": {},
+                        "name": "init-mysql-wait",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://d33fd69bf5482f22aa2cf05d85f7f90da00f2669d04d9606980e4615da79791e",
+                                "exitCode": 0,
+                                "finishedAt": "2019-11-18T19:05:44Z",
+                                "reason": "Completed",
+                                "startedAt": "2019-11-18T19:05:44Z"
+                            }
+                        }
+                    },
+                    {
+                        "containerID": "docker://e7fe63df916fab4fd4052abfec8cb57c7fde20a6118da113c821af8159db723c",
+                        "image": "docker.io/mysql:5.6",
+                        "imageID": "docker-pullable://docker.io/mysql@sha256:411cb46904b646d1260e075505ee75d7457511412011eb03928e956eac1c0bf9",
+                        "lastState": {},
+                        "name": "init-mysql-database",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://e7fe63df916fab4fd4052abfec8cb57c7fde20a6118da113c821af8159db723c",
+                                "exitCode": 0,
+                                "finishedAt": "2019-11-18T19:05:46Z",
+                                "reason": "Completed",
+                                "startedAt": "2019-11-18T19:05:46Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "172.17.0.15",
+                "qosClass": "Burstable",
+                "startTime": "2019-11-18T19:05:39Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2019-11-18T19:03:40Z",
+                "labels": {
+                    "app": "grafana"
+                },
+                "name": "grafana",
+                "namespace": "myproject",
+                "resourceVersion": "7305",
+                "selfLink": "/api/v1/namespaces/myproject/services/grafana",
+                "uid": "221fc6f8-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "clusterIP": "172.30.5.121",
+                "externalIPs": [
+                    "172.29.166.113"
+                ],
+                "externalTrafficPolicy": "Cluster",
+                "ports": [
+                    {
+                        "nodePort": 32556,
+                        "port": 3000,
+                        "protocol": "TCP",
+                        "targetPort": 3000
+                    }
+                ],
+                "selector": {
+                    "app": "grafana"
+                },
+                "sessionAffinity": "None",
+                "type": "LoadBalancer"
+            },
+            "status": {
+                "loadBalancer": {
+                    "ingress": [
+                        {
+                            "ip": "172.29.166.113"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "labels": {
+                    "app": "kafka",
+                    "component": "kafka-broker"
+                },
+                "name": "kafka",
+                "namespace": "myproject",
+                "resourceVersion": "6819",
+                "selfLink": "/api/v1/namespaces/myproject/services/kafka",
+                "uid": "ebd5fb0b-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "clusterIP": "172.30.73.166",
+                "ports": [
+                    {
+                        "name": "kafka-port",
+                        "port": 9092,
+                        "protocol": "TCP",
+                        "targetPort": 9092
+                    }
+                ],
+                "selector": {
+                    "app": "kafka",
+                    "component": "kafka-broker"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "labels": {
+                    "app": "kafka",
+                    "component": "kafka-zk"
+                },
+                "name": "kafka-zk",
+                "namespace": "myproject",
+                "resourceVersion": "6825",
+                "selfLink": "/api/v1/namespaces/myproject/services/kafka-zk",
+                "uid": "ebdc5a49-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "clusterIP": "172.30.85.82",
+                "ports": [
+                    {
+                        "name": "client",
+                        "port": 2181,
+                        "protocol": "TCP",
+                        "targetPort": 2181
+                    },
+                    {
+                        "name": "follower",
+                        "port": 2888,
+                        "protocol": "TCP",
+                        "targetPort": 2888
+                    },
+                    {
+                        "name": "leader",
+                        "port": 3888,
+                        "protocol": "TCP",
+                        "targetPort": 3888
+                    }
+                ],
+                "selector": {
+                    "app": "kafka-zk",
+                    "component": "kafka-zk"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2019-11-18T19:02:39Z",
+                "labels": {
+                    "app": "mysql"
+                },
+                "name": "mysql",
+                "namespace": "myproject",
+                "resourceVersion": "6982",
+                "selfLink": "/api/v1/namespaces/myproject/services/mysql",
+                "uid": "fe039a67-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "clusterIP": "172.30.118.22",
+                "ports": [
+                    {
+                        "port": 3306,
+                        "protocol": "TCP",
+                        "targetPort": 3306
+                    }
+                ],
+                "selector": {
+                    "app": "mysql"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "prometheus.io/path": "/",
+                    "prometheus.io/port": "9090",
+                    "prometheus.io/scrape": "true"
+                },
+                "creationTimestamp": "2019-11-18T19:03:23Z",
+                "labels": {
+                    "app": "prometheus"
+                },
+                "name": "prometheus",
+                "namespace": "myproject",
+                "resourceVersion": "7203",
+                "selfLink": "/api/v1/namespaces/myproject/services/prometheus",
+                "uid": "18015193-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "clusterIP": "172.30.70.48",
+                "ports": [
+                    {
+                        "port": 9090,
+                        "protocol": "TCP",
+                        "targetPort": 9090
+                    }
+                ],
+                "selector": {
+                    "app": "prometheus"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2019-11-18T19:06:22Z",
+                "labels": {
+                    "app": "scdf-server"
+                },
+                "name": "scdf-server",
+                "namespace": "myproject",
+                "resourceVersion": "13993",
+                "selfLink": "/api/v1/namespaces/myproject/services/scdf-server",
+                "uid": "82f1d45e-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "clusterIP": "172.30.44.196",
+                "externalIPs": [
+                    "172.29.138.103"
+                ],
+                "externalTrafficPolicy": "Cluster",
+                "ports": [
+                    {
+                        "name": "scdf-server",
+                        "nodePort": 30778,
+                        "port": 80,
+                        "protocol": "TCP",
+                        "targetPort": 9080
+                    }
+                ],
+                "selector": {
+                    "app": "scdf-server"
+                },
+                "sessionAffinity": "None",
+                "type": "LoadBalancer"
+            },
+            "status": {
+                "loadBalancer": {
+                    "ingress": [
+                        {
+                            "ip": "172.29.138.103"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2019-11-18T19:05:45Z",
+                "labels": {
+                    "app": "skipper"
+                },
+                "name": "skipper",
+                "namespace": "myproject",
+                "resourceVersion": "7934",
+                "selfLink": "/api/v1/namespaces/myproject/services/skipper",
+                "uid": "6cb408a9-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "clusterIP": "172.30.100.56",
+                "externalIPs": [
+                    "172.29.139.111"
+                ],
+                "externalTrafficPolicy": "Cluster",
+                "ports": [
+                    {
+                        "nodePort": 32246,
+                        "port": 80,
+                        "protocol": "TCP",
+                        "targetPort": 7577
+                    }
+                ],
+                "selector": {
+                    "app": "skipper"
+                },
+                "sessionAffinity": "None",
+                "type": "LoadBalancer"
+            },
+            "status": {
+                "loadBalancer": {
+                    "ingress": [
+                        {
+                            "ip": "172.29.139.111"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:03:40Z",
+                "generation": 1,
+                "labels": {
+                    "app": "grafana"
+                },
+                "name": "grafana",
+                "namespace": "myproject",
+                "resourceVersion": "7628",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/deployments/grafana",
+                "uid": "22185f55-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "app": "grafana"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%"
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "grafana"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "GF_SECURITY_ADMIN_USER",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "admin-username",
+                                                "name": "grafana"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "GF_SECURITY_ADMIN_PASSWORD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "admin-password",
+                                                "name": "grafana"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "springcloud/spring-cloud-dataflow-grafana-prometheus:2.2.1.RELEASE",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "grafana",
+                                "ports": [
+                                    {
+                                        "containerPort": 3000,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "2500Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m",
+                                        "memory": "100Mi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/etc/grafana/provisioning/datasources/datasources.yaml",
+                                        "name": "config",
+                                        "subPath": "datasources.yaml"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "grafana"
+                                },
+                                "name": "config"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2019-11-18T19:03:40Z",
+                        "lastUpdateTime": "2019-11-18T19:04:30Z",
+                        "message": "ReplicaSet \"grafana-688cd668c9\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    },
+                    {
+                        "lastTransitionTime": "2019-11-18T19:04:40Z",
+                        "lastUpdateTime": "2019-11-18T19:04:40Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    }
+                ],
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "generation": 1,
+                "labels": {
+                    "app": "kafka",
+                    "component": "kafka-broker"
+                },
+                "name": "kafka-broker",
+                "namespace": "myproject",
+                "resourceVersion": "7465",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/deployments/kafka-broker",
+                "uid": "ebd4656d-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "app": "kafka",
+                        "component": "kafka-broker"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": 1,
+                        "maxUnavailable": 1
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "kafka",
+                            "component": "kafka-broker"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "ENABLE_AUTO_EXTEND",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "KAFKA_RESERVED_BROKER_MAX_ID",
+                                        "value": "999999999"
+                                    },
+                                    {
+                                        "name": "KAFKA_AUTO_CREATE_TOPICS_ENABLE",
+                                        "value": "false"
+                                    },
+                                    {
+                                        "name": "KAFKA_PORT",
+                                        "value": "9092"
+                                    },
+                                    {
+                                        "name": "KAFKA_ADVERTISED_PORT",
+                                        "value": "9092"
+                                    },
+                                    {
+                                        "name": "KAFKA_ADVERTISED_HOST_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "status.podIP"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "KAFKA_ZOOKEEPER_CONNECT",
+                                        "value": "kafka-zk:2181"
+                                    }
+                                ],
+                                "image": "wurstmeister/kafka:2.11-0.11.0.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "kafka",
+                                "ports": [
+                                    {
+                                        "containerPort": 9092,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "lastUpdateTime": "2019-11-18T19:02:09Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "lastUpdateTime": "2019-11-18T19:04:08Z",
+                        "message": "ReplicaSet \"kafka-broker-7bbf579457\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "observedGeneration": 1,
+                "replicas": 1,
+                "unavailableReplicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "generation": 1,
+                "labels": {
+                    "app": "kafka",
+                    "component": "kafka-zk"
+                },
+                "name": "kafka-zk",
+                "namespace": "myproject",
+                "resourceVersion": "9600",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/deployments/kafka-zk",
+                "uid": "ebd7838f-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "app": "kafka-zk",
+                        "component": "kafka-zk"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": 1,
+                        "maxUnavailable": 1
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "kafka-zk",
+                            "component": "kafka-zk"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "ZOOKEEPER_ID",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "name": "ZOOKEEPER_SERVER_1",
+                                        "value": "kafka-zk"
+                                    }
+                                ],
+                                "image": "digitalwonderland/zookeeper",
+                                "imagePullPolicy": "Always",
+                                "name": "kafka-zk",
+                                "ports": [
+                                    {
+                                        "containerPort": 2181,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2019-11-18T19:02:09Z",
+                        "lastUpdateTime": "2019-11-18T19:02:09Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2019-11-18T19:12:10Z",
+                        "lastUpdateTime": "2019-11-18T19:12:10Z",
+                        "message": "ReplicaSet \"kafka-zk-5f9bff7d5\" has timed out progressing.",
+                        "reason": "ProgressDeadlineExceeded",
+                        "status": "False",
+                        "type": "Progressing"
+                    }
+                ],
+                "observedGeneration": 1,
+                "replicas": 1,
+                "unavailableReplicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:02:39Z",
+                "generation": 1,
+                "labels": {
+                    "app": "mysql"
+                },
+                "name": "mysql",
+                "namespace": "myproject",
+                "resourceVersion": "7367",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/deployments/mysql",
+                "uid": "fdf8d237-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "app": "mysql"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": 1,
+                        "maxUnavailable": 1
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "mysql"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "MYSQL_ROOT_PASSWORD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "mysql-root-password",
+                                                "name": "mysql"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "mysql:5.6",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "mysql",
+                                "ports": [
+                                    {
+                                        "containerPort": 3306,
+                                        "name": "mysql",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/var/lib/mysql",
+                                        "name": "data"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30,
+                        "volumes": [
+                            {
+                                "name": "data",
+                                "persistentVolumeClaim": {
+                                    "claimName": "mysql"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2019-11-18T19:02:39Z",
+                        "lastUpdateTime": "2019-11-18T19:02:39Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2019-11-18T19:02:39Z",
+                        "lastUpdateTime": "2019-11-18T19:03:52Z",
+                        "message": "ReplicaSet \"mysql-7fc8c7c5c9\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:03:18Z",
+                "generation": 1,
+                "labels": {
+                    "app": "prometheus"
+                },
+                "name": "prometheus",
+                "namespace": "myproject",
+                "resourceVersion": "7444",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/deployments/prometheus",
+                "uid": "14ff7aac-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "app": "prometheus"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%"
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "prometheus"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "args": [
+                                    "--config.file=/etc/prometheus/prometheus.yml",
+                                    "--storage.tsdb.path=/prometheus/"
+                                ],
+                                "image": "prom/prometheus:v2.6.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "prometheus",
+                                "ports": [
+                                    {
+                                        "containerPort": 9090,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/etc/prometheus/",
+                                        "name": "prometheus-config-volume"
+                                    },
+                                    {
+                                        "mountPath": "/prometheus/",
+                                        "name": "prometheus-storage-volume"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "prometheus"
+                                },
+                                "name": "prometheus-config-volume"
+                            },
+                            {
+                                "emptyDir": {},
+                                "name": "prometheus-storage-volume"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2019-11-18T19:04:07Z",
+                        "lastUpdateTime": "2019-11-18T19:04:07Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2019-11-18T19:03:18Z",
+                        "lastUpdateTime": "2019-11-18T19:04:07Z",
+                        "message": "ReplicaSet \"prometheus-74c9c8b9d8\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "2"
+                },
+                "creationTimestamp": "2019-11-18T19:06:29Z",
+                "generation": 4,
+                "labels": {
+                    "app": "scdf-server"
+                },
+                "name": "scdf-server",
+                "namespace": "myproject",
+                "resourceVersion": "11035",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/deployments/scdf-server",
+                "uid": "86944d02-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "app": "scdf-server"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%"
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "scdf-server"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "KUBERNETES_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "SERVER_PORT",
+                                        "value": "9080"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_CONFIG_ENABLED",
+                                        "value": "false"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_FEATURES_ANALYTICS_ENABLED",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_FEATURES_SCHEDULES_ENABLED",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_NAME",
+                                        "value": "mysql"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_CONFIG_NAME",
+                                        "value": "scdf-server"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_SERVER_URI",
+                                        "value": "http://${SCDF_SERVER_SERVICE_HOST}:${SCDF_SERVER_SERVICE_PORT}"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_SKIPPER_CLIENT_SERVER_URI",
+                                        "value": "http://${SKIPPER_SERVICE_HOST}:${SKIPPER_SERVICE_PORT}/api"
+                                    },
+                                    {
+                                        "name": "SPRING_APPLICATION_JSON",
+                                        "value": "{ \"maven\": { \"local-repository\": null, \"remote-repositories\": { \"repo1\": { \"url\": \"https://repo.spring.io/libs-snapshot\"} } } }"
+                                    }
+                                ],
+                                "image": "springcloud/spring-cloud-dataflow-server:2.2.1.RELEASE",
+                                "imagePullPolicy": "Always",
+                                "name": "scdf-server",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "1",
+                                        "memory": "2Gi"
+                                    },
+                                    "requests": {
+                                        "cpu": "500m",
+                                        "memory": "1Gi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "initContainers": [
+                            {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;"
+                                ],
+                                "image": "busybox",
+                                "imagePullPolicy": "Always",
+                                "name": "init-mysql-wait",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "scdf-sa",
+                        "serviceAccountName": "scdf-sa",
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2019-11-18T19:06:29Z",
+                        "lastUpdateTime": "2019-11-18T19:17:29Z",
+                        "message": "ReplicaSet \"scdf-server-7c7d6644c5\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    },
+                    {
+                        "lastTransitionTime": "2019-11-18T19:17:49Z",
+                        "lastUpdateTime": "2019-11-18T19:17:49Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    }
+                ],
+                "observedGeneration": 4,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:05:39Z",
+                "generation": 1,
+                "labels": {
+                    "app": "skipper"
+                },
+                "name": "skipper",
+                "namespace": "myproject",
+                "resourceVersion": "8117",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/deployments/skipper",
+                "uid": "690140e8-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "progressDeadlineSeconds": 600,
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "matchLabels": {
+                        "app": "skipper"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%"
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "skipper"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_CONFIG_NAME",
+                                        "value": "skipper"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_NAME",
+                                        "value": "mysql"
+                                    }
+                                ],
+                                "image": "springcloud/spring-cloud-skipper-server:2.1.2.RELEASE",
+                                "imagePullPolicy": "Always",
+                                "name": "skipper",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "1",
+                                        "memory": "1Gi"
+                                    },
+                                    "requests": {
+                                        "cpu": "500m",
+                                        "memory": "640Mi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "initContainers": [
+                            {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;"
+                                ],
+                                "image": "busybox",
+                                "imagePullPolicy": "Always",
+                                "name": "init-mysql-wait",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            },
+                            {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "mysql -h mysql -u root -e \"CREATE DATABASE IF NOT EXISTS skipper;\""
+                                ],
+                                "env": [
+                                    {
+                                        "name": "MYSQL_PWD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "mysql-root-password",
+                                                "name": "mysql"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "mysql:5.6",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "init-mysql-database",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "scdf-sa",
+                        "serviceAccountName": "scdf-sa",
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2019-11-18T19:06:25Z",
+                        "lastUpdateTime": "2019-11-18T19:06:25Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2019-11-18T19:05:39Z",
+                        "lastUpdateTime": "2019-11-18T19:06:25Z",
+                        "message": "ReplicaSet \"skipper-65b6989dd7\" has successfully progressed.",
+                        "reason": "NewReplicaSetAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:03:40Z",
+                "generation": 1,
+                "labels": {
+                    "app": "grafana",
+                    "pod-template-hash": "2447822475"
+                },
+                "name": "grafana-688cd668c9",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "grafana",
+                        "uid": "22185f55-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "7627",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/grafana-688cd668c9",
+                "uid": "2219eab8-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "grafana",
+                        "pod-template-hash": "2447822475"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "grafana",
+                            "pod-template-hash": "2447822475"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "GF_SECURITY_ADMIN_USER",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "admin-username",
+                                                "name": "grafana"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "GF_SECURITY_ADMIN_PASSWORD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "admin-password",
+                                                "name": "grafana"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "springcloud/spring-cloud-dataflow-grafana-prometheus:2.2.1.RELEASE",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "grafana",
+                                "ports": [
+                                    {
+                                        "containerPort": 3000,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "500m",
+                                        "memory": "2500Mi"
+                                    },
+                                    "requests": {
+                                        "cpu": "100m",
+                                        "memory": "100Mi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/etc/grafana/provisioning/datasources/datasources.yaml",
+                                        "name": "config",
+                                        "subPath": "datasources.yaml"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "grafana"
+                                },
+                                "name": "config"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "generation": 1,
+                "labels": {
+                    "app": "kafka",
+                    "component": "kafka-broker",
+                    "pod-template-hash": "3669135013"
+                },
+                "name": "kafka-broker-7bbf579457",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "kafka-broker",
+                        "uid": "ebd4656d-0a35-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "7464",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/kafka-broker-7bbf579457",
+                "uid": "ebd5ca62-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "kafka",
+                        "component": "kafka-broker",
+                        "pod-template-hash": "3669135013"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "kafka",
+                            "component": "kafka-broker",
+                            "pod-template-hash": "3669135013"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "ENABLE_AUTO_EXTEND",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "KAFKA_RESERVED_BROKER_MAX_ID",
+                                        "value": "999999999"
+                                    },
+                                    {
+                                        "name": "KAFKA_AUTO_CREATE_TOPICS_ENABLE",
+                                        "value": "false"
+                                    },
+                                    {
+                                        "name": "KAFKA_PORT",
+                                        "value": "9092"
+                                    },
+                                    {
+                                        "name": "KAFKA_ADVERTISED_PORT",
+                                        "value": "9092"
+                                    },
+                                    {
+                                        "name": "KAFKA_ADVERTISED_HOST_NAME",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "status.podIP"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "KAFKA_ZOOKEEPER_CONNECT",
+                                        "value": "kafka-zk:2181"
+                                    }
+                                ],
+                                "image": "wurstmeister/kafka:2.11-0.11.0.3",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "kafka",
+                                "ports": [
+                                    {
+                                        "containerPort": 9092,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:02:09Z",
+                "generation": 1,
+                "labels": {
+                    "app": "kafka-zk",
+                    "component": "kafka-zk",
+                    "pod-template-hash": "195699381"
+                },
+                "name": "kafka-zk-5f9bff7d5",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "kafka-zk",
+                        "uid": "ebd7838f-0a35-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "6845",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/kafka-zk-5f9bff7d5",
+                "uid": "ebdb0a00-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "kafka-zk",
+                        "component": "kafka-zk",
+                        "pod-template-hash": "195699381"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "kafka-zk",
+                            "component": "kafka-zk",
+                            "pod-template-hash": "195699381"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "ZOOKEEPER_ID",
+                                        "value": "1"
+                                    },
+                                    {
+                                        "name": "ZOOKEEPER_SERVER_1",
+                                        "value": "kafka-zk"
+                                    }
+                                ],
+                                "image": "digitalwonderland/zookeeper",
+                                "imagePullPolicy": "Always",
+                                "name": "kafka-zk",
+                                "ports": [
+                                    {
+                                        "containerPort": 2181,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:02:39Z",
+                "generation": 1,
+                "labels": {
+                    "app": "mysql",
+                    "pod-template-hash": "3974737175"
+                },
+                "name": "mysql-7fc8c7c5c9",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "mysql",
+                        "uid": "fdf8d237-0a35-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "7365",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/mysql-7fc8c7c5c9",
+                "uid": "fdfb0849-0a35-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "mysql",
+                        "pod-template-hash": "3974737175"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "mysql",
+                            "pod-template-hash": "3974737175"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "MYSQL_ROOT_PASSWORD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "mysql-root-password",
+                                                "name": "mysql"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "mysql:5.6",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "mysql",
+                                "ports": [
+                                    {
+                                        "containerPort": 3306,
+                                        "name": "mysql",
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/var/lib/mysql",
+                                        "name": "data"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30,
+                        "volumes": [
+                            {
+                                "name": "data",
+                                "persistentVolumeClaim": {
+                                    "claimName": "mysql"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:03:18Z",
+                "generation": 1,
+                "labels": {
+                    "app": "prometheus",
+                    "pod-template-hash": "3075746584"
+                },
+                "name": "prometheus-74c9c8b9d8",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "prometheus",
+                        "uid": "14ff7aac-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "7442",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/prometheus-74c9c8b9d8",
+                "uid": "1500d2b8-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "prometheus",
+                        "pod-template-hash": "3075746584"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "prometheus",
+                            "pod-template-hash": "3075746584"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "args": [
+                                    "--config.file=/etc/prometheus/prometheus.yml",
+                                    "--storage.tsdb.path=/prometheus/"
+                                ],
+                                "image": "prom/prometheus:v2.6.0",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "prometheus",
+                                "ports": [
+                                    {
+                                        "containerPort": 9090,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "volumeMounts": [
+                                    {
+                                        "mountPath": "/etc/prometheus/",
+                                        "name": "prometheus-config-volume"
+                                    },
+                                    {
+                                        "mountPath": "/prometheus/",
+                                        "name": "prometheus-storage-volume"
+                                    }
+                                ]
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30,
+                        "volumes": [
+                            {
+                                "configMap": {
+                                    "defaultMode": 420,
+                                    "name": "prometheus"
+                                },
+                                "name": "prometheus-config-volume"
+                            },
+                            {
+                                "emptyDir": {},
+                                "name": "prometheus-storage-volume"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "2"
+                },
+                "creationTimestamp": "2019-11-18T19:17:29Z",
+                "generation": 2,
+                "labels": {
+                    "app": "scdf-server",
+                    "pod-template-hash": "3738220071"
+                },
+                "name": "scdf-server-7c7d6644c5",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "scdf-server",
+                        "uid": "86944d02-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "11033",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/scdf-server-7c7d6644c5",
+                "uid": "10528e00-0a38-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "scdf-server",
+                        "pod-template-hash": "3738220071"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "scdf-server",
+                            "pod-template-hash": "3738220071"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "KUBERNETES_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "SERVER_PORT",
+                                        "value": "9080"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_CONFIG_ENABLED",
+                                        "value": "false"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_FEATURES_ANALYTICS_ENABLED",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_FEATURES_SCHEDULES_ENABLED",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_NAME",
+                                        "value": "mysql"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_CONFIG_NAME",
+                                        "value": "scdf-server"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_SERVER_URI",
+                                        "value": "http://${SCDF_SERVER_SERVICE_HOST}:${SCDF_SERVER_SERVICE_PORT}"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_SKIPPER_CLIENT_SERVER_URI",
+                                        "value": "http://${SKIPPER_SERVICE_HOST}:${SKIPPER_SERVICE_PORT}/api"
+                                    },
+                                    {
+                                        "name": "SPRING_APPLICATION_JSON",
+                                        "value": "{ \"maven\": { \"local-repository\": null, \"remote-repositories\": { \"repo1\": { \"url\": \"https://repo.spring.io/libs-snapshot\"} } } }"
+                                    }
+                                ],
+                                "image": "springcloud/spring-cloud-dataflow-server:2.2.1.RELEASE",
+                                "imagePullPolicy": "Always",
+                                "name": "scdf-server",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "1",
+                                        "memory": "2Gi"
+                                    },
+                                    "requests": {
+                                        "cpu": "500m",
+                                        "memory": "1Gi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "initContainers": [
+                            {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;"
+                                ],
+                                "image": "busybox",
+                                "imagePullPolicy": "Always",
+                                "name": "init-mysql-wait",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "scdf-sa",
+                        "serviceAccountName": "scdf-sa",
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 2,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "0",
+                    "deployment.kubernetes.io/max-replicas": "0",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:06:29Z",
+                "generation": 2,
+                "labels": {
+                    "app": "scdf-server",
+                    "pod-template-hash": "3792440860"
+                },
+                "name": "scdf-server-7cf6884db4",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "scdf-server",
+                        "uid": "86944d02-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "10768",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/scdf-server-7cf6884db4",
+                "uid": "869856e9-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 0,
+                "selector": {
+                    "matchLabels": {
+                        "app": "scdf-server",
+                        "pod-template-hash": "3792440860"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "scdf-server",
+                            "pod-template-hash": "3792440860"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "KUBERNETES_NAMESPACE",
+                                        "valueFrom": {
+                                            "fieldRef": {
+                                                "apiVersion": "v1",
+                                                "fieldPath": "metadata.namespace"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "SERVER_PORT",
+                                        "value": "80"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_CONFIG_ENABLED",
+                                        "value": "false"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_FEATURES_ANALYTICS_ENABLED",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_FEATURES_SCHEDULES_ENABLED",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_NAME",
+                                        "value": "mysql"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_CONFIG_NAME",
+                                        "value": "scdf-server"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_DATAFLOW_SERVER_URI",
+                                        "value": "http://${SCDF_SERVER_SERVICE_HOST}:${SCDF_SERVER_SERVICE_PORT}"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_SKIPPER_CLIENT_SERVER_URI",
+                                        "value": "http://${SKIPPER_SERVICE_HOST}:${SKIPPER_SERVICE_PORT}/api"
+                                    },
+                                    {
+                                        "name": "SPRING_APPLICATION_JSON",
+                                        "value": "{ \"maven\": { \"local-repository\": null, \"remote-repositories\": { \"repo1\": { \"url\": \"https://repo.spring.io/libs-snapshot\"} } } }"
+                                    }
+                                ],
+                                "image": "springcloud/spring-cloud-dataflow-server:2.2.1.RELEASE",
+                                "imagePullPolicy": "Always",
+                                "name": "scdf-server",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "1",
+                                        "memory": "2Gi"
+                                    },
+                                    "requests": {
+                                        "cpu": "500m",
+                                        "memory": "1Gi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "initContainers": [
+                            {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;"
+                                ],
+                                "image": "busybox",
+                                "imagePullPolicy": "Always",
+                                "name": "init-mysql-wait",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "scdf-sa",
+                        "serviceAccountName": "scdf-sa",
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "observedGeneration": 2,
+                "replicas": 0
+            }
+        },
+        {
+            "apiVersion": "apps/v1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2019-11-18T19:05:39Z",
+                "generation": 1,
+                "labels": {
+                    "app": "skipper",
+                    "pod-template-hash": "2162545883"
+                },
+                "name": "skipper-65b6989dd7",
+                "namespace": "myproject",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "skipper",
+                        "uid": "690140e8-0a36-11ea-a312-00155d380160"
+                    }
+                ],
+                "resourceVersion": "8115",
+                "selfLink": "/apis/apps/v1/namespaces/myproject/replicasets/skipper-65b6989dd7",
+                "uid": "69040a1d-0a36-11ea-a312-00155d380160"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "skipper",
+                        "pod-template-hash": "2162545883"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "skipper",
+                            "pod-template-hash": "2162545883"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_CONFIG_NAME",
+                                        "value": "skipper"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API",
+                                        "value": "true"
+                                    },
+                                    {
+                                        "name": "SPRING_CLOUD_KUBERNETES_SECRETS_NAME",
+                                        "value": "mysql"
+                                    }
+                                ],
+                                "image": "springcloud/spring-cloud-skipper-server:2.1.2.RELEASE",
+                                "imagePullPolicy": "Always",
+                                "name": "skipper",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {
+                                    "limits": {
+                                        "cpu": "1",
+                                        "memory": "1Gi"
+                                    },
+                                    "requests": {
+                                        "cpu": "500m",
+                                        "memory": "640Mi"
+                                    }
+                                },
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "initContainers": [
+                            {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;"
+                                ],
+                                "image": "busybox",
+                                "imagePullPolicy": "Always",
+                                "name": "init-mysql-wait",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            },
+                            {
+                                "command": [
+                                    "sh",
+                                    "-c",
+                                    "mysql -h mysql -u root -e \"CREATE DATABASE IF NOT EXISTS skipper;\""
+                                ],
+                                "env": [
+                                    {
+                                        "name": "MYSQL_PWD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "mysql-root-password",
+                                                "name": "mysql"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "mysql:5.6",
+                                "imagePullPolicy": "IfNotPresent",
+                                "name": "init-mysql-database",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "serviceAccount": "scdf-sa",
+                        "serviceAccountName": "scdf-sa",
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "route.openshift.io/v1",
+            "kind": "Route",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/host.generated": "true"
+                },
+                "creationTimestamp": "2019-11-18T19:10:31Z",
+                "labels": {
+                    "app": "grafana"
+                },
+                "name": "grafana",
+                "namespace": "myproject",
+                "resourceVersion": "9186",
+                "selfLink": "/apis/route.openshift.io/v1/namespaces/myproject/routes/grafana",
+                "uid": "16f0e5e6-0a37-11ea-a5d8-00155d380160"
+            },
+            "spec": {
+                "host": "grafana-myproject.192.168.156.250.nip.io",
+                "to": {
+                    "kind": "Service",
+                    "name": "grafana",
+                    "weight": 100
+                },
+                "wildcardPolicy": "None"
+            },
+            "status": {
+                "ingress": [
+                    {
+                        "conditions": [
+                            {
+                                "lastTransitionTime": "2019-11-18T19:10:31Z",
+                                "status": "True",
+                                "type": "Admitted"
+                            }
+                        ],
+                        "host": "grafana-myproject.192.168.156.250.nip.io",
+                        "routerName": "router",
+                        "wildcardPolicy": "None"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "route.openshift.io/v1",
+            "kind": "Route",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/host.generated": "true"
+                },
+                "creationTimestamp": "2019-11-18T19:10:52Z",
+                "labels": {
+                    "app": "prometheus"
+                },
+                "name": "prometheus",
+                "namespace": "myproject",
+                "resourceVersion": "9275",
+                "selfLink": "/apis/route.openshift.io/v1/namespaces/myproject/routes/prometheus",
+                "uid": "238196a9-0a37-11ea-a5d8-00155d380160"
+            },
+            "spec": {
+                "host": "prometheus-myproject.192.168.156.250.nip.io",
+                "to": {
+                    "kind": "Service",
+                    "name": "prometheus",
+                    "weight": 100
+                },
+                "wildcardPolicy": "None"
+            },
+            "status": {
+                "ingress": [
+                    {
+                        "conditions": [
+                            {
+                                "lastTransitionTime": "2019-11-18T19:10:52Z",
+                                "status": "True",
+                                "type": "Admitted"
+                            }
+                        ],
+                        "host": "prometheus-myproject.192.168.156.250.nip.io",
+                        "routerName": "router",
+                        "wildcardPolicy": "None"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "route.openshift.io/v1",
+            "kind": "Route",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/host.generated": "true"
+                },
+                "creationTimestamp": "2019-11-18T19:30:06Z",
+                "labels": {
+                    "app": "scdf-server"
+                },
+                "name": "scdf-server",
+                "namespace": "myproject",
+                "resourceVersion": "14031",
+                "selfLink": "/apis/route.openshift.io/v1/namespaces/myproject/routes/scdf-server",
+                "uid": "d38a0f42-0a39-11ea-a5d8-00155d380160"
+            },
+            "spec": {
+                "host": "scdf-server-myproject.192.168.156.250.nip.io",
+                "port": {
+                    "targetPort": "scdf-server"
+                },
+                "to": {
+                    "kind": "Service",
+                    "name": "scdf-server",
+                    "weight": 100
+                },
+                "wildcardPolicy": "None"
+            },
+            "status": {
+                "ingress": [
+                    {
+                        "conditions": [
+                            {
+                                "lastTransitionTime": "2019-11-18T19:30:06Z",
+                                "status": "True",
+                                "type": "Admitted"
+                            }
+                        ],
+                        "host": "scdf-server-myproject.192.168.156.250.nip.io",
+                        "routerName": "router",
+                        "wildcardPolicy": "None"
+                    }
+                ]
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}
