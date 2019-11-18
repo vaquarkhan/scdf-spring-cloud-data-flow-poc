@@ -21,7 +21,7 @@ You can reach the Grafana dashboard at http://localhost:3000 with the following 
 User: admin
 Password: admin
 
-<<<<<<< HEAD
+
 TODO 
 integration test to insert generated csv file with milion rows into sftp folder, 50 000 jms xml messages into Kafka 
 gui security
@@ -30,4 +30,3 @@ email notification - alert manager
 =======
 To run local openshift v3. try 
 `docker pull openshift/origin`
->>>>>>> 38459ca34d047eba4e5fed4550d885faa1708075
