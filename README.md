@@ -20,7 +20,7 @@ To start Shell run:
 -change default memory: `minishift config set --global memory 8192`
 - minishift config set  hyperv-virtual-switch "External VM Switch"
 -start it `minishift start`  (this downloads the oc binary, image ...)
-When OpenShift server started.The server is accessible via web console at: https://192.168.156.250:8443/console
+When OpenShift server started.The server is accessible via web console at: https://192.168.156.249:8443/console
 You are logged in as:
 User:     developer
 Password: developer
