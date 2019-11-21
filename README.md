@@ -51,3 +51,9 @@ openshift example
 email notification - alert manager
 
 https://github.com/spring-cloud/spring-cloud-dataflow
+
+
+
+easies way is to use https://dataflow.spring.io/docs/installation/local/manual/
+
+
