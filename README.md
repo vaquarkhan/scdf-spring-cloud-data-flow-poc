@@ -71,4 +71,11 @@ java -cp lib/* org.springframework.boot.loader.JarLauncher
 --spring.datasource.password=SKIPPER
 --spring.datasource.driver.class=oracle.jdbc.OracleDriver
 
+mvn install:install-file -Dfile=ojdbc8.jar -DgroupId=com.oracle.jdbc -DartifactId=ojdbc8 -Dversion=12.2.0.1 -Dpackaging=jar -DgeneratePom=true
 
+java -jar spring-cloud-dataflow-server/spring-cloud-dataflow-server-2.3.0.BUILD-SNAPSHOT.jar 
+    --spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1 
+    --spring.datasource.username=SCDF 
+    --spring.datasource.password=SCDF 
+    --spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+    
