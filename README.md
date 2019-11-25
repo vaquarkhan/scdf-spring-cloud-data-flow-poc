@@ -58,3 +58,7 @@ easies way is to use https://dataflow.spring.io/docs/installation/local/manual/
 
 https://www.kaggle.com/ is a data generator platform
 
+
+
+install 18c-XE https://github.com/fuzziebrain/docker-oracle-xe and try to export the oracle scripts which flyway created
+
