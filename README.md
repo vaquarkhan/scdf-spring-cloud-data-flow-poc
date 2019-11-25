@@ -62,3 +62,8 @@ https://www.kaggle.com/ is a data generator platform
 
 install 18c-XE https://github.com/fuzziebrain/docker-oracle-xe and try to export the oracle scripts which flyway created
 
+java -cp lib/* org.springframework.boot.loader.JarLauncher
+--spring.datasource.url=jdbc:oracle:thin:@//spring.guru.csi0i9rgj9ws.us-east-1.rds.amazonaws.com:1521/ORCL --spring.datasource.username=${USERNAME} --spring.datasource.password=${PASSWORD} 
+--spring.datasource.driver.class=oracle.jdbc.OracleDriver
+
+
